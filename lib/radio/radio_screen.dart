@@ -5,8 +5,14 @@ class RadioScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color:Colors.yellow,
+    return Stack(
+      children: [
+        Image.asset('assets/images/radio_screen_background.png',width: double.infinity,height: double.infinity,
+        fit: BoxFit.fill,),
+
+      ]
+      
+      
     );
   }
 }
