@@ -38,7 +38,8 @@ class HadithScreen extends StatelessWidget {
                         )
                         );
                   },
-                  child: Suranamewidget(sura_number:'1',sura_name_arabic: 'Hadith 1',)),
+                //  child: Suranamewidget(sura_number:'1',sura_name_arabic: 'Hadith 1',)
+                ),
                 
                   ),
               ),

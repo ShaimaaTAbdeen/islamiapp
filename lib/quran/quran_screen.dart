@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:islamiapp/quran/quran_screen_details.dart';
 import 'package:islamiapp/widget/suranamewidget.dart';
 
@@ -7,7 +8,7 @@ class QuranScreen extends StatelessWidget {
    QuranScreen({super.key});
   List<String>suraNames = ['الفاتحة'
   ,'البقرة'
-  , 'عمران آل'
+  , 'آل عمران'
   ,'النساء'
   ,'المائدة'
   ,'الأنعام'
@@ -120,6 +121,123 @@ class QuranScreen extends StatelessWidget {
   ,'الفلق'
   ,'الناس'];
 
+  List<String>suraNamesEnglish=[
+'al-Fātihah',
+'al-Baqarah',
+'Āl-i-Imrān',
+'an-Nisā',
+'al-Māidah',
+'al-Anām',
+'al-Arāf',
+'al-Anfāl',
+'at-Tawbah',
+'Yūnus',
+'Hūd',
+'Yūsuf',
+'ar-Rad',
+'Ibrāhīm',
+'al-Hijr',
+'an-Nahl',
+'al-Isrā',
+'al-Kahf',
+'Maryam',
+'Tāhā',
+'al-Ambiyā',
+'al-Hajj',
+'al-Muminūn',
+'an-Nūr',
+'al-Furqān',
+'ash-Shuarā',
+'an-Naml',
+'al-Qasas',
+'al-Ankabūt',
+'ar-Rūm',
+'Luqmān',
+'as-Sajdah',
+'al-Ahzāb',
+'Saba',
+'Fātir',
+'Yāsīn',
+'as-Sāffāt',
+'Sād',
+'az-Zumar',
+'Ghāfir',
+'Fussilat',
+'ash-Shūrā',
+'az-Zukhruf',
+'ad-Dukhān',
+'al-Jāthiyah',
+'al-Ahqāf',
+'Muhammad',
+'al-Fath',
+'al-Hujurāt',
+'Qāf',
+'adh-Dhāriyāt',
+'at-Tūr',
+'an-Najm',
+'al-Qamar'
+'ar-Rahmān',
+'al-Wāqiah',
+'al-Hadīd',
+'al-Mujādalah',
+'al-Hashr',
+'al-Mumtahinah',
+'as-Saff',
+'al-Jumuah'
+'al-Munāfiqūn',
+'at-Taghābun',
+'at-Talāq',
+'at-Tahrīm',
+'al-Mulk',
+'al-Qalam',
+'al-Hāqqah',
+'al-Maārij',
+'Nūh',
+'al-Jinn',
+'al-Muzzammil',
+'al-Muddaththir',
+'al-Qiyāmah'
+'al-Insān',
+'al-Mursalāt',
+'an-Naba',
+'an-Nāziāt'
+'Abasa',
+'at-Takwīr',
+'al-Infitār',
+'al-Mutaffifīn',
+'al-Inshiqāq',
+'al-Burūj',
+'at-Tāriq',
+'al-Alā',
+'al-Ghāshiyah',
+'al-Fajr',
+'al-Balad',
+'ash-Shams',
+'al-Layl',
+'ad-Duhā',
+'ash-Sharh',
+'at-Tīn',
+'al-Alaq',
+'al-Qadr',
+'al-Bayyinah',
+'az-Zalzalah',
+'al-Ādiyāt',
+'al-Qāriah',
+'at-Takāthur',
+'al-Asr',
+'al-Humazah',
+'al-Fīl',
+'al-Quraysh'
+'al-Māūn',
+'al-Kawthar',
+'al-Kāfirūn',
+'an-Nasr',
+'al-masad',
+'al-Ikhlās',
+'al-Falaq',
+'al-Nās'
+  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -160,19 +278,8 @@ class QuranScreen extends StatelessWidget {
                   separatorBuilder: (context,index)=>const Divider(),
                   itemCount: suraNames.length,
                   itemBuilder: (context,index)=>
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder:(context)
-                      {
-                        return QuranScreenDetails();
-                        }
-                        )
-                        );
-                  },
-                  //child: Suranamewidget(sura_number:'1',sura_name: 'Al-Fatiha',sura_verses:'7' ,sura_name_arabic: 'الفاتحة',)),
-                  child: Suranamewidget(sura_number:(index+1).toString(),sura_name_arabic: suraNames[index],)),
-
+                Suranamewidget(index: index+1,sura_number:(index+1).toString(),sura_name_arabic: suraNames[index],sura_name: suraNamesEnglish[index],),
+ 
                   ),
               ),
               
@@ -188,4 +295,5 @@ class QuranScreen extends StatelessWidget {
   
     );
   }
+ 
 }
