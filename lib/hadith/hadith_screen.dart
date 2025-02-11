@@ -1,12 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:islamiapp/hadith/hadith_screen_details.dart';
+import 'package:islamiapp/widget/hadithnamewidget.dart';
 import 'package:islamiapp/widget/suranamewidget.dart';
 
-class HadithScreen extends StatelessWidget {
-  const HadithScreen({super.key});
+class HadithScreen extends StatefulWidget {
+  HadithScreen({super.key});
+
+  @override
+  State<HadithScreen> createState() => _HadithScreenState();
+}
+
+class _HadithScreenState extends State<HadithScreen> {
+  List<String>hadiths=[];
+  @override
+  void initState() {
+    // TODO: implement initState
+     loadHadith();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+   
     return Stack(
       children: [
         Image.asset('assets/images/home_screen_background.png',
@@ -26,19 +42,19 @@ class HadithScreen extends StatelessWidget {
               Expanded(
                 child: ListView.separated(
                   separatorBuilder: (context,index)=>const Divider(),
-                  itemCount: 20,
+                  itemCount: hadiths.length-1,
                   itemBuilder: (context,index)=>
                 InkWell(
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(builder:(context)
                       {
-                        return HadithScreenDetails();
+                        return HadithScreenDetails(hadithNumber:(index+1).toString(),hadiths: hadiths,);
                         }
                         )
                         );
                   },
-                //  child: Suranamewidget(sura_number:'1',sura_name_arabic: 'Hadith 1',)
+                child: Hadithnamewidget(hadithNumber: (index+1).toString(),),
                 ),
                 
                   ),
@@ -49,5 +65,18 @@ class HadithScreen extends StatelessWidget {
       ]
       
     );
+  }
+
+  void loadHadith() async
+  {
+    String content = await rootBundle.loadString('assets/ahadeth.txt');
+    hadiths=content.split('#');
+    setState(() {
+      
+    });
+    print(hadiths.length);
+   
+    
+   
   }
 }
