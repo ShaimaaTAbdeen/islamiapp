@@ -7,6 +7,7 @@ class Suranamewidget extends StatelessWidget {
   //String sura_name;
   //String sura_verses;
   String sura_name_arabic;
+  
 
   @override
   Widget build(BuildContext context) {

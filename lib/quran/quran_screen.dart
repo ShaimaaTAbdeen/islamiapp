@@ -1,12 +1,130 @@
+
 import 'package:flutter/material.dart';
 import 'package:islamiapp/quran/quran_screen_details.dart';
 import 'package:islamiapp/widget/suranamewidget.dart';
 
 class QuranScreen extends StatelessWidget {
-  const QuranScreen({super.key});
+   QuranScreen({super.key});
+  List<String>suraNames = ['الفاتحة'
+  ,'البقرة'
+  , 'عمران آل'
+  ,'النساء'
+  ,'المائدة'
+  ,'الأنعام'
+  ,'الأعراف'
+  , 'الأنفال'
+  ,'التوبة'
+  ,'يونس'
+  ,'هود'
+  ,'يوسف'
+  ,'الرعد'
+  ,'إبراهيم'
+  ,'الحج'
+  ,'النحل'
+  ,'الإسراء'
+  , 'الكهف'
+  ,'مريم'
+  ,'طه'
+  ,'الأنبياء'
+  ,'الحج'
+  ,'المؤمنون'
+  ,'النور'
+  ,'الفرقان'
+  ,'الشعراء'
+  ,'النمل'
+  ,'القصص'
+  ,'العنكبوت'
+  ,'الروم'
+  ,'لقمان'
+  ,'السجدة'
+  ,'الأحزاب'
+  ,'سبأ'
+  ,'فاطر'
+  ,'يس'
+  ,'الصافات'
+  ,'ص'
+  ,'الزمر'
+  ,'غافر'
+  ,'فصلت'
+  ,'الشورى'
+  ,'الزخرف'
+  ,'الدخان'
+  ,'الجاثية'
+  ,'الأحقاف'
+  ,'محمد'
+  ,'الفتح'
+  ,'الحجرات'
+  ,'ق'
+  ,'الذاريات'
+  ,'الطور'
+  ,'النجم'
+  ,'القمر'
+  ,'الرحمن'
+  ,'الواقعة'
+  ,'الحديد'
+  ,'المجادلة'
+  ,'الحشر'
+  ,'الممتحنة'
+  ,'الصف'
+  ,'الجمعة'
+  ,'المنافقون'
+  ,'التغابن'
+  ,'الطلاق'
+  ,'التحريم'
+  ,'الملك'
+  ,'القلم'
+  ,'الحاقة'
+  ,'المعارج'
+  ,'نوح'
+  ,'الجن'
+  ,'المزمل'
+  ,'المدثر'
+  ,'القيامة'
+  ,'الإنسان'
+  ,'المرسلات'
+  ,'النبأ'
+  ,'النازعات'
+  ,'عبس'
+  ,'التكوير'
+  ,'الانفطار'
+  ,'المطففين'
+  ,'الانشقاق'
+  ,'البروج'
+  ,'الطارق'
+  ,'الأعلى'
+  ,'الغاشية'
+  ,'الفجر'
+  ,'البلد'
+  ,'الشمس'
+  ,'الليل'
+  ,'الضحى'
+  ,'الشرح'
+  ,'التين'
+  ,'العلق'
+  ,'القدر'
+  ,'البينة'
+  ,'الزلزلة'
+  ,'العاديات'
+  ,'القارعة'
+  ,'التكاثر'
+  ,'العصر'
+  ,'الهمزة'
+  ,'الفيل'
+  ,'قريش'
+  ,'الماعون'
+  ,'الكوثر'
+  ,'الكافرون'
+  ,'النصر'
+  ,'المسد'
+  ,'الإخلاص'
+  ,'الفلق'
+  ,'الناس'];
+
 
   @override
   Widget build(BuildContext context) {
+  
+
     return Stack(
       children: [
 
@@ -40,7 +158,7 @@ class QuranScreen extends StatelessWidget {
               Expanded(
                 child: ListView.separated(
                   separatorBuilder: (context,index)=>const Divider(),
-                  itemCount: 20,
+                  itemCount: suraNames.length,
                   itemBuilder: (context,index)=>
                 InkWell(
                   onTap: () {
@@ -53,7 +171,7 @@ class QuranScreen extends StatelessWidget {
                         );
                   },
                   //child: Suranamewidget(sura_number:'1',sura_name: 'Al-Fatiha',sura_verses:'7' ,sura_name_arabic: 'الفاتحة',)),
-                  child: Suranamewidget(sura_number:'1',sura_name_arabic: 'الفاتحة',)),
+                  child: Suranamewidget(sura_number:(index+1).toString(),sura_name_arabic: suraNames[index],)),
 
                   ),
               ),
