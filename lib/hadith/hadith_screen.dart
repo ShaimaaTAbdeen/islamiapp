@@ -1,8 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islamiapp/hadith/hadith_screen_details.dart';
 import 'package:islamiapp/widget/hadithnamewidget.dart';
-import 'package:islamiapp/widget/suranamewidget.dart';
 
 class HadithScreen extends StatefulWidget {
   HadithScreen({super.key});
@@ -10,19 +11,25 @@ class HadithScreen extends StatefulWidget {
   @override
   State<HadithScreen> createState() => _HadithScreenState();
 }
-
 class _HadithScreenState extends State<HadithScreen> {
   List<String>hadiths=[];
+
   @override
   void initState() {
     // TODO: implement initState
-     loadHadith();
+    
     super.initState();
+     loadHadith();
+     
+        
+
   }
 
   @override
   Widget build(BuildContext context) {
+   ///
    
+   //print(hadiths.length-1);
     return Stack(
       children: [
         Image.asset('assets/images/home_screen_background.png',
@@ -42,7 +49,7 @@ class _HadithScreenState extends State<HadithScreen> {
               Expanded(
                 child: ListView.separated(
                   separatorBuilder: (context,index)=>const Divider(),
-                  itemCount: hadiths.length-1,
+                  itemCount: hadiths.length,
                   itemBuilder: (context,index)=>
                 InkWell(
                   onTap: () {
@@ -70,13 +77,15 @@ class _HadithScreenState extends State<HadithScreen> {
   void loadHadith() async
   {
     String content = await rootBundle.loadString('assets/ahadeth.txt');
-    hadiths=content.split('#');
+    List<String>data=content.split('#');
+    hadiths=data;
+
     setState(() {
       
     });
-    print(hadiths.length);
    
-    
+    print(hadiths[0]);
+    print(hadiths.length);
    
   }
 }
