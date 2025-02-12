@@ -77,7 +77,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
   }
   void setTasbeeh()
   {
-    if(counter>30)
+    if(counter>33)
     {
       countTasbeeh++;
       counter=0;
